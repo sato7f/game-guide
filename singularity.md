@@ -1,6 +1,11 @@
 
-- root権限がないサーバーでのSingularityでのMySQLやg++の環境構築
-- singularityでsandboxを作ってその中でMySQLの起動もC++のコンパイルもする
+# 研究室サーバでのSingularity環境構築
+
+ここでは，root権限がないサーバでのSingularityでのMySQLやg++の環境構築について書く．
+
+ただし，バージョンやサーバが変化する可能性が多いに考えられるため，一度関連情報を調べてから実行することが望ましい．
+
+- 方針：Singularityでsandboxを作ってその中でMySQLの起動もC++のコンパイルする
 - Singulalrityでは以下のディレクトリが自動でマウントされる（マウント元もマウント先も同じディレクトリ名）
 
     - $HOME
@@ -19,6 +24,7 @@
     ```shell:bash
     mkdir singularity-dir
     ```
+<br>
 
 2. 作成したディレクトリ内で以下のファイルを作成
     ```shell:bash
@@ -27,22 +33,24 @@
     ```
 
     ```shell:singularity-def
+    # singularity-def
+
     Bootstrap: docker
     From: ubuntu:20.04
     
     %post
-       export DEBIAN_FRONTEND=noninteractive
-       apt-get update && apt-get upgrade -y
-       apt-get install -y mysql-client mysql-server tzdata vim curl git build-essential libmysqlcppconn-dev cmake
-       # service mysql start
-       # mysql -uroot -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'root';"
-       # mysql -uroot -ppassword -e "CREATE DATABASE test_db;"
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update && apt-get upgrade -y
+        apt-get install -y mysql-client mysql-server tzdata vim curl git build-essential libmysqlcppconn-dev cmake
+        # service mysql start
+        # mysql -uroot -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'root';"
+        # mysql -uroot -ppassword -e "CREATE DATABASE test_db;"
     
     %environment
-       export MYSQL_ROOT_PASSWORD=root
+        export MYSQL_ROOT_PASSWORD=root
 
     %runscript
-       service mysql start && exec "$@"
+        service mysql start && exec "$@"
     ```
 
     `#` でコメントアウトした場所はコメントアウトしなくてもいいかも（佐藤はコメントアウトした）
@@ -54,6 +62,7 @@
 
 4. 以下のサイトでトークンを取得（テキストとしてコピーして後でコマンドラインに貼り付ける）
     - https://cloud.sylabs.io/tokens
+<br>
 
 5. singularityのリモートにログイン
     ```shell:bash
@@ -61,6 +70,7 @@
     ```
     
     トークンを要求されるのでここでペースト
+<br>
 
 6. リモートでsandboxを作成する（約10~15分かかる）
     ```shell:bash
@@ -86,13 +96,11 @@
         ```shell:bash
         mysqld_safe --skip-grant-tables &
         ```
-    <br>
 
     4. rootとしてMySQLに入る
         ```shell:bash
         mysql -uroot
         ```
-    <br>
 
     5. MySQLの初期設定をする
         ```shell:bash
@@ -100,7 +108,6 @@
         ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'root'
         FLUSH PRIVILEGES;
         ```
-    <br>
 
     6. MySQLを出る
         ```shell:bash
@@ -108,20 +115,18 @@
         ```
 <br>
 
-7. 設定できた確認のためMySQLを再起動して入ってみる
+8. 設定できた確認のためMySQLを再起動して入ってみる
     1. **MySQLの再起動**
         ```shell:bash
         service mysql stop
         mysqld --user=mysql &
         ```
         プロセスidが出力されるはず，その場合ちゃんと起動されてます
-    <br>
     
     2. **設定したパスワードでMySQLに入る**
         ```shell:bash
         mysql -uroot -proot
         ```
-    <br>
 
     3. C++のコンパイル
         ```sehll:bash
@@ -130,6 +135,8 @@
         ```
 
         ```cpp:test.cpp
+        // test.cpp
+
         #include <algorithm>
         #include <bitset>
         #include <cassert>
@@ -164,5 +171,5 @@
         }
         ```
 
-        問題なく実行できれば完成！
-        あとは，いい感じにコードを書くだけ！
+        問題なく実行できれば完成．
+        あとは，いい感じにコードを書くだけ．
