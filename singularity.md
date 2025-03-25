@@ -19,7 +19,6 @@
     ```shell:bash
     mkdir singularity-dir
     ```
-<br>
 
 2. 作成したディレクトリ内で以下のファイルを作成
     ```shell:bash
@@ -55,7 +54,6 @@
 
 4. 以下のサイトでトークンを取得（テキストとしてコピーして後でコマンドラインに貼り付ける）
     - https://cloud.sylabs.io/tokens
-<br>
 
 5. singularityのリモートにログイン
     ```shell:bash
@@ -63,7 +61,6 @@
     ```
     
     トークンを要求されるのでここでペースト
-<br>
 
 6. リモートでsandboxを作成する（約10~15分かかる）
     ```shell:bash
@@ -77,15 +74,13 @@
         ```shell:bash
         singularity shell --writable mysql_cpp_env.sandbox
         ```
-    <br>
-    
+
     2. MySQLの状態を確認
         ```shell:bash
         service mysql status
         ps aux | grep mysqld
         ```
         動いていたら一応再起動する（`service mysql stop`か`ps aux | grep mysqld`ででたプロセスidをkill）
-    <br>
 
     3. セーフモードでMySQLを起動
         ```shell:bash
