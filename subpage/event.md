@@ -1,5 +1,7 @@
 # 研究集会，イベント，研究室
 
+<a href="../readme.md?id=event">最初のページに戻る</a>
+
 ここでは，組合せゲーム理論やゲーム情報学に関係する発表会，イベントを列挙する．
 
 ## 国内研究集会
@@ -62,4 +64,6 @@
 以下のサイトを確認
 - https://sites.google.com/view/jcgtw/%E3%83%AA%E3%83%B3%E3%82%AF
 
+---
 
+<a href="../readme.md?id=event">最初のページに戻る</a>

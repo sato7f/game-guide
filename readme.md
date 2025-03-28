@@ -7,10 +7,9 @@ GAME班とは，田中輝雄教授の先進ソフトウェア研究室，およ�
 
 ## 目次
 
-- [GAME班の概要（２０２４年度版）](./summary.md)
-- [書籍](./book.md)
-- [研究集会，イベント，研究室](./event.md)
-- [有用ウェブサイト](./website.md)
-- [代表的な組合せゲーム](./game.md)
-- [ツールの使い方](./tips.md)
-
+- <a id="summary" href="./subpage/summary.md">GAME班の概要（２０２４年度版）</a>
+- <a id="book" href="./subpage/book.md">書籍</a>
+- <a id="event" href="./subpage/event.md">研究集会，イベント，研究室</a>
+- <a id="survey" href="./subpage/survey.md">先行研究の検索</a>
+- <a id="website" href="./subpage/website.md">有用ウェブサイト</a>
+- <a id="tips" href="./subpage/tips.md">ツールの使い方</a>
