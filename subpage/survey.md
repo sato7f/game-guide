@@ -103,12 +103,10 @@
 - たまに，自分では絶対たどり着かないようなサイトを教えてくれる（嬉しい）
 - 活用例：https://hpc-lab-ku.slack.com/archives/C06U2NH209Y/p1738767496926739
 
-
-
-
-
 ---
+
 参考にしたサイト
+
 https://www.blog.studyvalley.jp/2021/12/06/cinii/
 
 <a href="../readme.md?id=survey">最初のページに戻る</a>
